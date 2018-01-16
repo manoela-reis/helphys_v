@@ -1,8 +1,5 @@
 <ion-header>
   <ion-navbar>
-    <button ion-button menuToggle>
-      <ion-icon name="menu"></ion-icon>
-    </button>
     <ion-title>
       Login
     </ion-title>
@@ -15,19 +12,25 @@
         <ion-label>
           Email
         </ion-label>
-        <ion-input type="email" placeholder=""></ion-input>
+        <ion-input type="email" placeholder=""[(ngModel)]="email" name="email" [ngModelOptions]="{standalone: true}"required="required"></ion-input>
       </ion-item>
       <ion-item id="login-input5">
         <ion-label>
           Senha
         </ion-label>
-        <ion-input type="password" placeholder=""></ion-input>
+        <ion-input type="password" placeholder=""[(ngModel)]="password" name="password" required="required"></ion-input>
       </ion-item>
     </ion-list>
     <div class="spacer" style="height:40px;" id="login-spacer5"></div>
-    <button id="login-button16" ion-button color="positive" block on-click="goToHelphys()">
-      Entrar
-    </button>
+    <div padding text-center>
+      
+        <button *ngIf="email && password " ion-button color="danger" round (click)="submitLogin()">
+         Login</button>
+       <!-- Show dead button if form is not filled -->
+       <button *ngIf="!email && !password" ion-button color="danger" clear round>Login Now</button>
+       
+       
+     </div>
     <button id="login-button17" ion-button outline color="positive" block on-click="goToCadastro()">
       Criar Conta
     </button>

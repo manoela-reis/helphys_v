@@ -3,6 +3,7 @@ import { NavController } from 'ionic-angular';
 import { ExercCioPage } from '../exerc-cio/exerc-cio';
 import { DVidaPage } from '../d-vida/d-vida';
 import { CadastroPage } from '../cadastro/cadastro';
+import {AuthProvider} from '../../providers/auth/auth';
 
 @Component({
   selector: 'page-helphys',
@@ -10,7 +11,7 @@ import { CadastroPage } from '../cadastro/cadastro';
 })
 export class HelphysPage {
 
-  constructor(public navCtrl: NavController) {
+  constructor(public navCtrl: NavController, private auth: AuthProvider) {
   }
   goToExercCio(params){
     if (!params) params = {};

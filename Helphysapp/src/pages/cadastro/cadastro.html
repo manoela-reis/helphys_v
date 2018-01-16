@@ -11,26 +11,22 @@
 <ion-content padding id="page15">
   <form id="cadastro-form4">
     <ion-list id="cadastro-list8">
-      <ion-item id="cadastro-input1">
+      <!-- <ion-item id="cadastro-input1">
         <ion-label>
           Nome
         </ion-label>
-        <ion-input type="text" placeholder=""></ion-input>
+        <ion-input type="text" placeholder="" name="nome"></ion-input>
+      </ion-item> -->
+      <ion-item>
+        <ion-label stacked>Email</ion-label>
+        <ion-input type="email" [(ngModel)]="email" name="email" placeholder="eg. john@doe.com"></ion-input>
       </ion-item>
-      <ion-item id="cadastro-input2">
-        <ion-label>
-          Email
-        </ion-label>
-        <ion-input type="email" placeholder=""></ion-input>
-      </ion-item>
-      <ion-item id="cadastro-input3">
-        <ion-label>
-          Senha
-        </ion-label>
-        <ion-input type="text" placeholder=""></ion-input>
+      <ion-item>
+        <ion-label stacked>Password</ion-label>
+        <ion-input type="password" [(ngModel)]="password" name="password"></ion-input>
       </ion-item>
     </ion-list>
-    <button id="cadastro-button14" ion-button color="positive" block>
+    <button id="cadastro-button14" ion-button color="positive" block (click)="doSignup()">
       Cadastrar
     </button>
   </form>

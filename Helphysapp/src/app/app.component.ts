@@ -3,6 +3,7 @@ import { Platform, Nav } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
+
 import { RelatRiosPage } from '../pages/relat-rios/relat-rios';
 import { SaibaMaisPage } from '../pages/saiba-mais/saiba-mais';
 import { ReferNciasPage } from '../pages/refer-ncias/refer-ncias';
@@ -13,7 +14,11 @@ import { DVidaPage } from '../pages/d-vida/d-vida';
 import { CadastroPage} from '../pages/cadastro/cadastro';
 import {LoginPage} from '../pages/login/login';
 
+import { AuthProvider } from '../providers/auth/auth';
+
 import { HelphysPage } from '../pages/helphys/helphys';
+
+import * as firebase from 'firebase';
 
 
 
@@ -22,16 +27,42 @@ import { HelphysPage } from '../pages/helphys/helphys';
 })
 export class MyApp {
   @ViewChild(Nav) navCtrl: Nav;
-    rootPage:any = HelphysPage;
+    rootPage:any = LoginPage;
 
-  constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen) {
-    platform.ready().then(() => {
+  constructor(public platform: Platform,public statusBar: StatusBar,  public splashScreen: SplashScreen, private auth: AuthProvider) {
+      this.initializeApp();
+      var that = this;
+      firebase.auth().onAuthStateChanged(function(user) {
+        if (user) {
+          // User is signed in.
+          that.rootPage = HelphysPage;
+          // ...
+        } else {
+          // User is signed out.
+          // ...
+          that.rootPage = LoginPage;
+  
+        }
+      });
+    };
+  
+
+  initializeApp() {
+    this.platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
-      statusBar.styleDefault();
-      splashScreen.hide();
+      this.statusBar.styleDefault();
+      this.splashScreen.hide();
     });
   }
+
+  openPage(page) {
+    // Reset the content nav to have just this page
+    // we wouldn't want the back button to show in this scenario
+    this.navCtrl.setRoot(page.component);
+  }
+
+
   goToRelatRios(params){
     if (!params) params = {};
     this.navCtrl.setRoot(RelatRiosPage);
@@ -60,5 +91,8 @@ export class MyApp {
   goToLogin(params){
     if (!params) params = {};
     this.navCtrl.setRoot(LoginPage);
+  }
+  logout(): void {
+    this.auth.logout();
   }
 }

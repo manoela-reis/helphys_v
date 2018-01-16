@@ -14,7 +14,9 @@
       Exercícios
     </ion-item>
   </ion-list>
-  <button id="helphys-button15" ion-button color="positive" block on-click="goToCadastro()">
-    Cadastrar
-  </button>
+  <ion-row>
+    <ion-item>
+        <div *ngIf="auth.currentUser">current user is {{auth.currentUser}}</div>
+    </ion-item>
+</ion-row>
 </ion-content>
