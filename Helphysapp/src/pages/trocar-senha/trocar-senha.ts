@@ -30,7 +30,7 @@ export class TrocarSenhaPage {
       this.authData.resetPassword(this.resetPasswordForm.value.email)
       .then((user) => {
         let alert = this.alertCtrl.create({
-          message: "We just sent you a reset link to your email",
+          message: "Mandamos um link para seu e-mail.",
           buttons: [
             {
               text: "Ok",
