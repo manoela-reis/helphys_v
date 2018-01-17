@@ -13,6 +13,8 @@ import { ExercCioPage } from '../pages/exerc-cio/exerc-cio';
 import { DVidaPage } from '../pages/d-vida/d-vida';
 import { CadastroPage} from '../pages/cadastro/cadastro';
 import {LoginPage} from '../pages/login/login';
+import { TrocarSenhaPage } from '../pages/trocar-senha/trocar-senha';
+
 
 import { AuthProvider } from '../providers/auth/auth';
 

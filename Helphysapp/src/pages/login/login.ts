@@ -4,6 +4,7 @@ import { CadastroPage } from '../cadastro/cadastro';
 import { HelphysPage } from '../helphys/helphys';
 import {AuthProvider} from '../../providers/auth/auth';
 import * as firebase from 'firebase';
+import { TrocarSenhaPage } from '../trocar-senha/trocar-senha';
 
 @Component({
   selector: 'page-login',
@@ -57,9 +58,9 @@ export class LoginPage {
         
         
       }
-  /*goToHelphys(params){
+  goToResetPassword(params){
     if (!params) params = {};
-    this.storage.push(HelphysPage);
-  }*/
+    this.navCtrl.push(TrocarSenhaPage);
+  }
   
 }

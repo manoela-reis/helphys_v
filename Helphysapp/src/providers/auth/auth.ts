@@ -26,19 +26,20 @@ export class AuthProvider {
   }
 
   signupUserService(account: {}){
-    
-        
-            return this.fireAuth.createUserWithEmailAndPassword(account['email'], account['password']).then((newUser) => {
+    return this.fireAuth.createUserWithEmailAndPassword(account['email'], account['password']).then((newUser) => {
               //sign in the user
-              this.fireAuth.signInWithEmailAndPassword(account['email'], account['password']).then((authenticatedUser) => {
-                //successful login, create user profile
-              this.userProfile.child(authenticatedUser.uid).set(
-                account
-              );
+      this.fireAuth.signInWithEmailAndPassword(account['email'], account['password']).then((authenticatedUser) => {
+                  //successful login, create user profile
+              this.userProfile.child(authenticatedUser.uid).set(account);
               });
-            });
+    });
     
   }
+
+  resetPassword(email: string): Promise<void> {
+    return this.af.auth.sendPasswordResetEmail(email);
+  }
+ 
 
   logout(){
     this.af.auth.signOut();      

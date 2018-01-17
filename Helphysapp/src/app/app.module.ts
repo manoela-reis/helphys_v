@@ -25,6 +25,7 @@ import { AngularFireAuthModule } from 'angularfire2/auth';
 import { AngularFireModule } from 'angularfire2';
 import { AuthProvider } from '../providers/auth/auth';
 import { HttpModule } from '@angular/http';
+import { TrocarSenhaPage } from '../pages/trocar-senha/trocar-senha';
 
 
 // Initialize Firebase
@@ -55,6 +56,7 @@ firebase.initializeApp(config);
     TelaPacientePage,
     PacienteEscolhidoPage,
     LoginPage,
+    TrocarSenhaPage,
     DatasPage
   ],
   imports: [
@@ -82,6 +84,7 @@ firebase.initializeApp(config);
     PacienteEscolhidoPage,
     CadastroPage,
     LoginPage,
+    TrocarSenhaPage,
     DatasPage
   ],
   providers: [
